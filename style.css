@@ -1,1 +1,70 @@
+body{
+font-family: Arial;
+margin:0;
+background:#0b1d33;
+color:white;
+text-align:center;
+}
 
+/* LOGIN */
+
+.login-body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login-box{
+background:#162b4d;
+padding:40px;
+border-radius:10px;
+width:300px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+border:none;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+background:#00bcd4;
+border:none;
+border-radius:5px;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:grid;
+grid-template-columns: repeat(2,1fr);
+gap:20px;
+width:60%;
+margin:auto;
+margin-top:40px;
+}
+
+.card{
+background:#1e3a5f;
+padding:30px;
+border-radius:10px;
+}
+
+.card h2{
+margin-bottom:10px;
+}
+
+.card p{
+font-size:30px;
+}
+
+.logout{
+margin-top:30px;
+}
