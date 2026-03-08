@@ -301,24 +301,26 @@ button:hover {
 }
 /* style.css (Thêm vào dưới cùng) */
 
+/* style.css (Thay thế đoạn CSS đã cung cấp ở lượt trước) */
+
 /* --- ĐỊNH DẠNG LOGO --- */
 
 /* 1. Cho trang Dashboard (header) */
 .header-left {
     display: flex;
     align-items: center;
-    gap: 15px; /* Tạo khoảng cách 15px giữa logo và chữ */
+    gap: 15px; /* Giữ nguyên khoảng cách */
 }
 
 .logo {
-    height: 40px; /* Điều chỉnh chiều cao logo phù hợp với header */
+    height: 40px; /* Giữ nguyên chiều cao phù hợp header */
     width: auto; /* Giữ nguyên tỷ lệ khung hình */
 }
 
 /* 2. Cho trang Đăng nhập (login box) */
 .login-logo {
-    height: 80px; /* Logo lớn hơn cho trang đăng nhập */
-    width: auto;
-    display: block; /* Cho phép căn giữa bằng margin */
-    margin: 0 auto 20px auto; /* Căn giữa ngang và tạo khoảng cách 20px phía dưới */
+    height: 50px; /* GIẢM từ 80px xuống 50px để logo nhỏ gọn hơn */
+    width: auto; /* Giữ nguyên tỷ lệ khung hình */
+    display: block; /* Giữ nguyên */
+    margin: 0 auto 20px auto; /* Giữ nguyên căn giữa ngang và khoảng cách dưới */
 }
