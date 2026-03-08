@@ -1,113 +1,73 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="vi">
 <head>
-
-<meta charset="UTF-8">
-
-<title>Weather Station Dashboard</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Station Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
-
 <body>
+    <header>
+        <h1>🌦 IoT Weather Station</h1>
+        <div class="controls">
+            <button class="btn-icon" onclick="toggleTheme()" title="Toggle Theme">🌙/☀️</button>
+            <button class="btn" onclick="setLang('vi')">VI</button>
+            <button class="btn" onclick="setLang('en')">EN</button>
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
+        </div>
+    </header>
 
-<header>
+    <div class="container">
+        <section class="main-grid">
+            <div class="card map-box">
+                <h2>Weather Map</h2>
+                <div id="map"></div>
+            </div>
 
-<h1>🌦 IoT Weather Station</h1>
+            <div class="sensor-panel">
+                <div class="card sensor-card">
+                    <h3 data-lang="temp">Temperature</h3>
+                    <p id="temp" class="sensor-value temp-color">--</p>
+                </div>
+                <div class="card sensor-card">
+                    <h3 data-lang="humidity">Humidity</h3>
+                    <p id="humidity" class="sensor-value hum-color">--</p>
+                </div>
+                <div class="card sensor-card">
+                    <h3 data-lang="rain">Rain</h3>
+                    <p id="rain" class="sensor-value rain-color">--</p>
+                </div>
+                <div class="card sensor-card">
+                    <h3 data-lang="wind">Wind Speed</h3>
+                    <p id="wind" class="sensor-value wind-color">--</p>
+                </div>
+            </div>
+        </section>
 
-<div class="controls">
+        <section class="card chart-area">
+            <h2 data-lang="history">Sensor History</h2>
+            <canvas id="chart"></canvas>
+        </section>
 
-<button onclick="toggleTheme()">🌙</button>
+        <div class="bottom-grid">
+            <section class="card forecast">
+                <h2 data-lang="forecast">Weather Conclusion</h2>
+                <p id="forecastText" class="forecast-highlight">Waiting for data...</p>
+            </section>
 
-<button onclick="setLang('vi')">VI</button>
+            <section class="card history">
+                <h2 data-lang="oldForecast">Forecast History</h2>
+                <ul id="forecastHistory" class="history-list"></ul>
+            </section>
+        </div>
+    </div>
 
-<button onclick="setLang('en')">EN</button>
-
-<button onclick="logout()">Logout</button>
-
-</div>
-
-</header>
-
-
-<section class="main-grid">
-
-<div class="map-box">
-
-<h2>Weather Map</h2>
-
-<div id="map"></div>
-
-</div>
-
-
-<div class="sensor-panel">
-
-<div class="card">
-<h3 data-lang="temp">Temperature</h3>
-<p id="temp">--</p>
-</div>
-
-<div class="card">
-<h3 data-lang="humidity">Humidity</h3>
-<p id="humidity">--</p>
-</div>
-
-<div class="card">
-<h3 data-lang="rain">Rain</h3>
-<p id="rain">--</p>
-</div>
-
-<div class="card">
-<h3 data-lang="wind">Wind Speed</h3>
-<p id="wind">--</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="chart-area">
-
-<h2 data-lang="history">Sensor History</h2>
-
-<canvas id="chart"></canvas>
-
-</section>
-
-
-<section class="forecast">
-
-<h2 data-lang="forecast">Weather Conclusion</h2>
-
-<p id="forecastText"></p>
-
-</section>
-
-
-<section class="history">
-
-<h2 data-lang="oldForecast">Forecast History</h2>
-
-<ul id="forecastHistory"></ul>
-
-</section>
-
-
-<script src="lang.js"></script>
-<script src="script.js"></script>
-<script src="map.js"></script>
-
+    <script src="lang.js"></script>
+    <script src="script.js"></script>
+    <script src="map.js"></script>
 </body>
-
 </html>
