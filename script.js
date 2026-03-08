@@ -21,13 +21,21 @@ window.location="index.html";
 }
 
 /* theme */
+/* theme */
 
 function toggleTheme(){
 
-document.body.classList.toggle("light");
+if(document.body.classList.contains("light")){
+
+document.body.classList.remove("light");
+
+}else{
+
+document.body.classList.add("light");
 
 }
 
+}
 /* sensor simulation */
 
 let chart;
