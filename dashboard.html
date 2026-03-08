@@ -2,8 +2,10 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
-<title>Weather Dashboard</title>
+
+<title>IoT Weather Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,56 +17,83 @@
 
 <header>
 
-<h1>🌍 IoT Weather Station</h1>
+<h1>🌦 IoT Weather Station</h1>
+
+<div class="controls">
+
+<button onclick="toggleTheme()">🌙</button>
+
+<button onclick="setLang('vi')">VI</button>
+
+<button onclick="setLang('en')">EN</button>
 
 <button onclick="logout()">Logout</button>
 
+</div>
+
 </header>
 
-<div class="container">
+<section class="dashboard">
 
 <div class="card">
 
-<h2>🌡 Temperature</h2>
+<h3 data-lang="temp">Temperature</h3>
 
-<p id="temp">-- °C</p>
-
-</div>
-
-<div class="card">
-
-<h2>💧 Humidity</h2>
-
-<p id="humidity">-- %</p>
+<p id="temp">--</p>
 
 </div>
 
 <div class="card">
 
-<h2>🌧 Rain</h2>
+<h3 data-lang="humidity">Humidity</h3>
 
-<p id="rain">-- mm</p>
+<p id="humidity">--</p>
 
 </div>
 
 <div class="card">
 
-<h2>🌬 Wind Speed</h2>
+<h3 data-lang="rain">Rain</h3>
 
-<p id="wind">-- m/s</p>
-
-</div>
+<p id="rain">--</p>
 
 </div>
 
-<div class="chart-box">
+<div class="card">
 
-<h2>Temperature Realtime Chart</h2>
+<h3 data-lang="wind">Wind Speed</h3>
 
-<canvas id="tempChart"></canvas>
+<p id="wind">--</p>
 
 </div>
 
+</section>
+
+<section class="chart-area">
+
+<h2 data-lang="history">Sensor History</h2>
+
+<canvas id="chart"></canvas>
+
+</section>
+
+<section class="forecast">
+
+<h2 data-lang="forecast">Weather Forecast</h2>
+
+<p id="forecastText"></p>
+
+</section>
+
+<section class="history">
+
+<h2 data-lang="oldForecast">Forecast History</h2>
+
+<ul id="forecastHistory"></ul>
+
+</section>
+
+<script src="lang.js"></script>
 <script src="script.js"></script>
 
 </body>
