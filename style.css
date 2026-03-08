@@ -273,3 +273,29 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+/* --- CUSTOM MAP MARKER --- */
+.custom-marker {
+    background: transparent;
+    border: none;
+}
+
+.marker-content {
+    background: var(--bg-card); /* Lấy màu nền của thẻ card hiện tại */
+    border: 3px solid var(--accent); /* Viền màu xanh accent */
+    border-radius: 50%; /* Bo tròn xoe */
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Đổ bóng cho nổi bật */
+    transition: transform var(--transition), background var(--transition);
+    cursor: pointer;
+}
+
+/* Hiệu ứng phóng to mượt mà khi di chuột vào icon */
+.marker-content:hover {
+    transform: scale(1.2) translateY(-5px);
+    background: var(--accent);
+}
