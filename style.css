@@ -299,3 +299,26 @@ button:hover {
     transform: scale(1.2) translateY(-5px);
     background: var(--accent);
 }
+/* style.css (Thêm vào dưới cùng) */
+
+/* --- ĐỊNH DẠNG LOGO --- */
+
+/* 1. Cho trang Dashboard (header) */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Tạo khoảng cách 15px giữa logo và chữ */
+}
+
+.logo {
+    height: 40px; /* Điều chỉnh chiều cao logo phù hợp với header */
+    width: auto; /* Giữ nguyên tỷ lệ khung hình */
+}
+
+/* 2. Cho trang Đăng nhập (login box) */
+.login-logo {
+    height: 80px; /* Logo lớn hơn cho trang đăng nhập */
+    width: auto;
+    display: block; /* Cho phép căn giữa bằng margin */
+    margin: 0 auto 20px auto; /* Căn giữa ngang và tạo khoảng cách 20px phía dưới */
+}
