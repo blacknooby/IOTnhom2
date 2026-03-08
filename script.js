@@ -28,9 +28,8 @@ let chart;
 function initChart() {
     let ctx = document.getElementById("chart").getContext("2d");
 
-    // Tạo hiệu ứng màu gradient mờ dần xuống dưới cho biểu đồ
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(49, 130, 206, 0.5)'); // Màu xanh accent
+    gradient.addColorStop(0, 'rgba(49, 130, 206, 0.5)'); 
     gradient.addColorStop(1, 'rgba(49, 130, 206, 0.0)');
 
     chart = new Chart(ctx, {
@@ -40,10 +39,10 @@ function initChart() {
             datasets: [{
                 label: "Temperature (°C)",
                 data: [],
-                borderColor: "#3182ce", // Màu đường kẻ
-                backgroundColor: gradient, // Đổ màu gradient
+                borderColor: "#3182ce", 
+                backgroundColor: gradient, 
                 borderWidth: 3,
-                tension: 0.4, // Làm mượt đường nét (khử góc cạnh)
+                tension: 0.4, 
                 fill: true,
                 pointBackgroundColor: "#ffffff",
                 pointBorderColor: "#3182ce",
@@ -53,13 +52,13 @@ function initChart() {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false, // Để biểu đồ tự giãn theo chiều cao container
+            maintainAspectRatio: false, 
             scales: {
                 y: {
                     suggestedMin: 15,
                     suggestedMax: 40,
                     grid: {
-                        color: "rgba(160, 174, 192, 0.1)" // Đường lưới ngang mờ
+                        color: "rgba(160, 174, 192, 0.1)" 
                     },
                     ticks: {
                         color: "#a0aec0"
@@ -67,7 +66,7 @@ function initChart() {
                 },
                 x: {
                     grid: {
-                        display: false // Ẩn đường lưới dọc cho sạch
+                        display: false 
                     },
                     ticks: {
                         color: "#a0aec0"
@@ -103,17 +102,14 @@ function updateSensor() {
 
     let time = new Date().toLocaleTimeString('vi-VN', { hour12: false });
 
-    // Cập nhật mảng dữ liệu biểu đồ
     chart.data.labels.push(time);
     chart.data.datasets[0].data.push(temp);
 
-    // Giữ lại 15 điểm dữ liệu gần nhất để biểu đồ nhìn dài và đẹp hơn (thay vì 10)
     if (chart.data.labels.length > 15) {
         chart.data.labels.shift();
         chart.data.datasets[0].data.shift();
     }
 
-    // Cập nhật biểu đồ với chế độ 'none' để không bị giật animation mỗi 2 giây
     chart.update('none');
 
     /* Weather conclusion */
@@ -144,8 +140,6 @@ function updateSensor() {
 window.onload = function() {
     if (document.getElementById("chart")) {
         initChart();
-        // Cập nhật chiều cao của thẻ canvas cho cân đối
-        document.getElementById("chart").style.height = "300px";
         setInterval(updateSensor, 2000);
     }
 };
