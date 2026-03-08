@@ -1,23 +1,18 @@
 function login(){
 
-let user=document.getElementById("username").value;
+let u=document.getElementById("username").value;
 
-let pass=document.getElementById("password").value;
+let p=document.getElementById("password").value;
 
-if(user==="nhom2" && pass==="nhom2"){
+if(u==="nhom2" && p==="nhom2")
 
 window.location="dashboard.html";
 
-}
-
-else{
+else
 
 document.getElementById("error").innerText="Sai tài khoản";
 
 }
-
-}
-
 
 function logout(){
 
@@ -25,15 +20,21 @@ window.location="index.html";
 
 }
 
+/* theme */
 
+function toggleTheme(){
 
-/* SENSOR SIMULATION */
+document.body.classList.toggle("light");
+
+}
+
+/* sensor simulation */
 
 let chart;
 
 function initChart(){
 
-const ctx=document.getElementById("tempChart").getContext("2d");
+let ctx=document.getElementById("chart");
 
 chart=new Chart(ctx,{
 
@@ -45,21 +46,13 @@ labels:[],
 
 datasets:[{
 
-label:"Temperature",
+label:"Temp",
 
 data:[],
 
-borderColor:"cyan",
-
-fill:false
+borderColor:"cyan"
 
 }]
-
-},
-
-options:{
-
-scales:{y:{beginAtZero:false}}
 
 }
 
@@ -67,7 +60,7 @@ scales:{y:{beginAtZero:false}}
 
 }
 
-
+let historyForecast=[];
 
 function updateSensor(){
 
@@ -79,9 +72,6 @@ let rain=(Math.random()*5).toFixed(1);
 
 let wind=(Math.random()*8).toFixed(1);
 
-
-if(document.getElementById("temp")){
-
 document.getElementById("temp").innerText=temp+" °C";
 
 document.getElementById("humidity").innerText=hum+" %";
@@ -89,7 +79,6 @@ document.getElementById("humidity").innerText=hum+" %";
 document.getElementById("rain").innerText=rain+" mm";
 
 document.getElementById("wind").innerText=wind+" m/s";
-
 
 let time=new Date().toLocaleTimeString();
 
@@ -107,15 +96,49 @@ chart.data.datasets[0].data.shift();
 
 chart.update();
 
-}
+/* weather conclusion */
+
+let forecast;
+
+if(rain>3)
+
+forecast="Heavy rain expected";
+
+else if(hum>80)
+
+forecast="Cloudy weather";
+
+else if(temp>30)
+
+forecast="Hot sunny day";
+
+else
+
+forecast="Normal weather";
+
+document.getElementById("forecastText").innerText=forecast;
+
+historyForecast.unshift(time+" - "+forecast);
+
+let list=document.getElementById("forecastHistory");
+
+list.innerHTML="";
+
+historyForecast.slice(0,5).forEach(i=>{
+
+let li=document.createElement("li");
+
+li.innerText=i;
+
+list.appendChild(li);
+
+});
 
 }
-
-
 
 window.onload=function(){
 
-if(document.getElementById("tempChart")){
+if(document.getElementById("chart")){
 
 initChart();
 
