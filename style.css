@@ -34,6 +34,7 @@ body {
     color: var(--text-main);
     transition: background var(--transition), color var(--transition);
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 .container {
@@ -66,6 +67,7 @@ header h1 {
 
 .controls {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -167,7 +169,7 @@ button:hover {
 .temp-color { color: #ff6b6b; }
 .hum-color { color: #4dabf7; }
 .rain-color { color: #51cf66; }
-.wind-color { color: #fcc419; }
+.pressure-color { color: #fcc419; }
 
 /* --- BIỂU ĐỒ --- */
 .chart-area {
@@ -212,7 +214,8 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .login-box {
@@ -266,11 +269,31 @@ button:hover {
 
 /* --- RESPONSIVE CHO ĐIỆN THOẠI --- */
 @media (max-width: 900px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .controls {
+        width: 100%;
+    }
+
     .main-grid {
         grid-template-columns: 1fr;
     }
     .bottom-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .sensor-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 16px;
     }
 }
 /* --- CUSTOM MAP MARKER --- */
@@ -280,7 +303,7 @@ button:hover {
 }
 
 .marker-content {
-    background: var(--bg-card); /* Lấy màu nền của thẻ card hiện tại */
+    background: var(--bg-card); 
     border: 3px solid var(--accent); /* Viền màu xanh accent */
     border-radius: 50%; /* Bo tròn xoe */
     width: 44px;

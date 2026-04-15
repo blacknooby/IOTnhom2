@@ -7,27 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <header>
     <div class="header-left">
-        <img src="https://raw.githubusercontent.com/blacknooby/IOTnhom2/refs/heads/main/Logo_Tr%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%A1i_H%E1%BB%8Dc_S%C6%B0_Ph%E1%BA%A1m_K%E1%BB%B9_Thu%E1%BA%ADt_TP_H%E1%BB%93_Ch%C3%AD_Minh.png" alt="HCMUTE Logo" class="logo">
+        <img src="logo.png" alt="HCMUTE Logo" class="logo">
         <h1>🌦 IoT Weather Station</h1>
     </div>
     <div class="controls">
-        <button class="btn-icon" onclick="toggleTheme()" title="Toggle Theme">🌙/☀️</button>
-        <button class="btn" onclick="setLang('vi')">VI</button>
-        <button class="btn" onclick="setLang('en')">EN</button>
-        <button class="btn btn-danger" onclick="logout()">Logout</button>
+        <button id="btn-theme" class="btn-icon" title="Toggle Theme">🌙/☀️</button>
+        <button id="btn-lang-vi" class="btn">VI</button>
+        <button id="btn-lang-en" class="btn">EN</button>
+        <button id="btn-logout" class="btn btn-danger" data-lang="logout">Logout</button>
     </div>
 </header>
 
     <div class="container">
         <section class="main-grid">
             <div class="card map-box">
-                <h2>Weather Map</h2>
+                <h2 data-lang="mapTitle">Weather Map</h2>
                 <div id="map"></div>
             </div>
 
@@ -45,8 +45,8 @@
                     <p id="rain" class="sensor-value rain-color">--</p>
                 </div>
                 <div class="card sensor-card">
-                    <h3 data-lang="wind">Wind Speed</h3>
-                    <p id="wind" class="sensor-value wind-color">--</p>
+                    <h3 data-lang="pressure">Pressure</h3>
+                    <p id="pressure" class="sensor-value pressure-color">--</p>
                 </div>
             </div>
         </section>
@@ -72,6 +72,7 @@
     </div>
 
     <script src="lang.js"></script>
+    <script type="module" src="firebase.js"></script>
     <script src="script.js"></script>
     <script src="map.js"></script>
 </body>
