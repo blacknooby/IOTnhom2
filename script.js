@@ -80,7 +80,7 @@ async function getForecastAI(temp, hum, rain) {
             const nextHum = predValues[1];  // 71.73...
             
             // Bạn có thể chế lại thành câu văn hoặc dùng hàm getForecast cũ để đánh giá
-            return `AI dự báo 1h tới: ${nextTemp.toFixed(1)}°C, Ẩm ${nextHum.toFixed(1)}%`;
+            return `AI dự báo 20 phút sau: ${nextTemp.toFixed(1)}°C, Ẩm ${nextHum.toFixed(1)}%`;
         }
 
         return "AI không trả về dữ liệu hợp lệ.";
@@ -131,7 +131,6 @@ function initChart() {
                     yAxisID: 'y', 
                     tension: 0.4
                 },
-                // Đã xóa dataset Mưa
                 {
                     label: "Pressure (hPa)",
                     data: [],
@@ -145,8 +144,25 @@ function initChart() {
             responsive: true,
             maintainAspectRatio: false,
             interaction: { mode: 'index', intersect: false },
+            
+            // Tắt các chấm tròn mặc định để đồ thị mượt hơn
+            elements: {
+                point: {
+                    radius: 0, 
+                    hitRadius: 10, 
+                    hoverRadius: 5 
+                }
+            },
+
             scales: {
-                x: { ticks: { color: "#a0aec0" } },
+                x: { 
+                    ticks: { 
+                        color: "#a0aec0",
+                        // Giới hạn số lượng nhãn trục X tránh bị chồng chữ
+                        maxTicksLimit: 12, 
+                        maxRotation: 45    
+                    } 
+                },
                 y: {
                     type: 'linear',
                     display: true,
@@ -166,12 +182,10 @@ function initChart() {
                     grid: { drawOnChartArea: false }, 
                     ticks: { color: "#a0aec0" }
                 }
-                // Đã xóa trục y_rain
             }
         }
     });
 }
-
 let historyForecast = [];
 
 function getForecast(temp, hum, rain) {
@@ -284,7 +298,7 @@ function initDashboardRealtime() {
     }
 
     unsubscribeWeather = window.firebaseWeatherApi.subscribeToWeatherReadings({
-        limit: 15,
+        limit: 720,
         onData: ({ latest, history }) => {
             renderDashboardData(latest, history);
         },
